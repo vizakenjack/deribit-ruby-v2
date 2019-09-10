@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://test.deribit.com/api/v2/private/get_account_summary?currency=BTC
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - deri-hmac-sha256 id=BxxwbXRLmYid,ts=1567859460921,sig=edd0e0311261f3071838c84bffee4343178b9c2570638be7efe3c822f64ea948,nonce=83705542
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 07 Sep 2019 12:31:01 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '401'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization,User-Agent,Range,X-Requested-With,Content-Type
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","result":{"total_pl":0.00015842,"session_upl":-0.00016257,"session_rpl":-3.4e-7,"session_funding":-0.0000029,"portfolio_margining_enabled":false,"options_vega":0.0,"options_theta":0.0,"options_session_upl":0.0,"options_session_rpl":0.0,"options_pl":0.0,"options_gamma":0.0,"options_delta":0.0,"margin_balance":8.10683332,"maintenance_margin":0.00002209,"initial_margin":0.00035844,"futures_session_upl":-0.00016257,"futures_session_rpl":-3.4e-7,"futures_pl":0.00015842,"equity":8.10683332,"deposit_address":"2NAqFfPDa8VLWQMJQKqUqYwHRHcfiQa28Ep","delta_total":0.0038,"currency":"BTC","balance":8.10699623,"available_withdrawal_funds":8.10647488,"available_funds":8.10647488},"usIn":1567859461189471,"usOut":1567859461192994,"usDiff":3523,"testnet":true}'
+    http_version: 
+  recorded_at: Sat, 07 Sep 2019 12:31:01 GMT
+recorded_with: VCR 5.0.0

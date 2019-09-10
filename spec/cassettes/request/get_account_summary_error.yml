@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://test.deribit.com/api/v2/private/get_account_summary
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - deri-hmac-sha256 id=BxxwbXRLmYid,ts=1567859461840,sig=1b01473526cf3d418772f951235f910f9ae80c050a024f3229b67f63be5b60e1,nonce=98123381
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 07 Sep 2019 12:31:02 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '198'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization,User-Agent,Range,X-Requested-With,Content-Type
+    body:
+      encoding: UTF-8
+      string: '{"jsonrpc":"2.0","error":{"message":"Invalid params","data":{"reason":"value
+        required","param":"currency"},"code":-32602},"testnet":true,"usIn":1567859462170941,"usOut":1567859462170972,"usDiff":31}'
+    http_version: 
+  recorded_at: Sat, 07 Sep 2019 12:31:02 GMT
+recorded_with: VCR 5.0.0

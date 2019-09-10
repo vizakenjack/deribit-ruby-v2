@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://test.deribit.com/api/v2/private/buy?amount=10&instrument_name=BTC-PERPETUAL&price=10000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - deri-hmac-sha256 id=BxxwbXRLmYid,ts=1567859461229,sig=fad622998a6c3a34591d336a415dab099bb3fb57a9fc929848a04ebcbd080f0f,nonce=95202555
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sat, 07 Sep 2019 12:31:01 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '353'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS
+      Access-Control-Allow-Headers:
+      - Authorization,User-Agent,Range,X-Requested-With,Content-Type
+      Strict-Transport-Security:
+      - max-age=15768000
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: '{"jsonrpc":"2.0","result":{"trades":[],"order":{"time_in_force":"good_til_cancelled","replaced":false,"reduce_only":false,"profit_loss":0.0,"price":10000.0,"post_only":false,"order_type":"limit","order_state":"open","order_id":"2828158219","max_show":10,"last_update_timestamp":1567859461456,"label":"","is_liquidation":false,"instrument_name":"BTC-PERPETUAL","filled_amount":0,"direction":"buy","creation_timestamp":1567859461456,"commission":0.0,"average_price":0.0,"api":true,"amount":10}},"usIn":1567859461457700,"usOut":1567859461807799,"usDiff":350099,"testnet":true}'
+    http_version: 
+  recorded_at: Sat, 07 Sep 2019 12:31:01 GMT
+recorded_with: VCR 5.0.0
