@@ -1,34 +1,23 @@
 require "base64"
 require "net/http"
 require "uri"
+require "json"
 
 module Deribit
   class API
     attr_accessor :key, :secret
 
-    def initialize(key, secret, test_server: false)
+    def initialize(key = nil, secret = nil, test_server: false)
       @key = key
       @secret = secret
       @server = set_server_uri(test_server)
     end
 
-    # For direct calls like `deribit.get_account_summary`
+    # For direct calls like `api.get_account_summary`
     # Trying to find API method in Deribit::REST_METHODS
     def method_missing(name, **params, &block)
       method = Deribit.find_method(name, params)
       send(method[:path], params)
-    end
-
-    def get_token
-      return @token if @token
-
-      params = { grant_type: "client_credentials", client_id: key, client_secret: secret, scope: "session:default" }
-      result = send "public/auth", params
-      puts "Auth result: #{result.inspect}"
-
-      @refresh_token = result[:refresh_token]
-      @expires = result[:expires_in]
-      @token = result[:access_token]
     end
 
     def send(route, params = {})
@@ -96,11 +85,6 @@ module Deribit
       http(uri).tap { |h| h.set_debug_output($stdout) if ENV["DEBUG"] }.
         post(uri.request_uri, URI.encode_www_form(params), set_headers(uri, params))
     end
-
-    # def set_headers(uri)
-    #   headers = { "Content-Type" => "application/json" }
-    #   headers.merge!("Authorization" => "Bearer #{get_token}") if uri.to_s.index "private"
-    # end
 
     def set_headers(uri, params = {})
       headers = { "Content-Type" => "application/json" }
