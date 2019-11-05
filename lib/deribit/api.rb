@@ -17,10 +17,10 @@ module Deribit
     # Trying to find API method in Deribit::REST_METHODS
     def method_missing(name, **params, &block)
       method = Deribit.find_method(name, params)
-      send(method[:path], params)
+      api_send(method[:path], params)
     end
 
-    def send(route, params = {})
+    def api_send(route, params = {})
       uri = URI(@server + route.to_s)
       response = get(uri, params)
 

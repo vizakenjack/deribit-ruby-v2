@@ -28,7 +28,7 @@ module Deribit
     def method_missing(name, **params, &block)
       method = Deribit.find_method(name, params)
       # puts "Found method: #{method}, params = #{params}"
-      send(path: method[:path], params: params)
+      api_send(path: method[:path], params: params)
     end
 
     def close
@@ -48,7 +48,7 @@ module Deribit
         nonce: nonce.to_s,
       }
 
-      send(path: "public/auth", params: params)
+      api_send(path: "public/auth", params: params)
 
       # todo: refactor
       30.times do |i|
@@ -89,7 +89,7 @@ module Deribit
       @socket.on(:error) { |e| puts e }
     end
 
-    def send(path:, params: {})
+    def api_send(path:, params: {})
       raise Error.new(message: "Socket is not initialized") unless socket
       params = {} if params == []
 
